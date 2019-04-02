@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+   <head>
+   	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <title></title>
+   </head>
+   <body>
+      <table class="table table-bordered" id="tempTable">
+         <thead>
+            <tr>
+               <th>Type</th>
+               
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>
+                  <select>
+                     <option value="1">भन्सार महसुल</option>
+                     <option value="2">मू.अ.कर</option>
+                     <option value="3">अन्त: शुल्क</option>
+                     <option value="4">अन्य </option>
+                  </select>
+               </td>
+              
+            </tr>
+            <tr>
+               <td>
+                  <select>
+                     <option value="1">भन्सार महसुल</option>
+                     <option value="2">मू.अ.कर</option>
+                     <option value="3">अन्त: शुल्क</option>
+                     <option value="4">अन्य </option>
+                  </select>
+               </td>
+              
+            </tr>
+            <tr>
+               <td>
+                  <select>
+                     <option value="1">भन्सार महसुल</option>
+                     <option value="2">मू.अ.कर</option>
+                     <option value="3">अन्त: शुल्क</option>
+                     <option value="4">अन्य </option>
+                  </select>
+               </td>
+              
+            </tr>
+         </tbody>
+      </table>
+      <button id="saveBtn" class="btn btn-primary pull-right">Save</button>
+   </body>
+<script type="text/javascript">
+	var dataList=[];
+	$("#saveBtn").click(function(e) {
+  
+            var allOptionsSelected=getEditableTableOptionData("#tempTable");
+					 console.log(allOptionsSelected);
+   
+             
+           
+	});
+	 function getEditableTableOptionData(param_table) {
+		var tRowList = $(param_table).find("tbody").find("tr");
+
+		var dataList = [];
+		for (var rIndex = 0; rIndex < tRowList.length; rIndex++) {
+			var tRow = tRowList[rIndex];
+
+			var rData = {};
+			var tCellList = $(tRow).find("td");
+			for (var cIndex = 0; cIndex < tCellList.length; cIndex++) {
+				var tCell = tCellList[cIndex];
+				if ($(tCell).find("select").length)
+					rData[$(tCell).find("option").prop("value")] = $(tCell).find(
+							"option:selected").val();
+			}
+			dataList.push(rData);
+		}
+		 return [...dataList.map(e=>Object.values(e))];
+	}
+</script>
+
+</html>

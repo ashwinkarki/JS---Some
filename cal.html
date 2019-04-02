@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <select class="form-control col-md-6">
+      <option value="1">Customs</option>
+      <option value="2">VAT</option>
+      <option value="3">Excise</option>
+      <option value="4">Others</option>
+
+    </select>
+    <form id="myForm">
+    <div id="formContainer" class="col-md-12" style="float: none;">
+    <!--div for customs!-->
+   <div class="customs-table row">
+        <div class="col-md-1">
+          <label id="cust">Customs</label>
+          
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="form-control customReason" />
+        </div>
+        <div class="col-md-2">
+          <input type="number" class="form-control txt customAmount" value="0" name="abc" min="0" />
+        </div>
+        <div class="col-md-2">
+          <input type="number" class="form-control txt customPenalty" value="0" name="abc" min="0" />
+        </div>
+        <div class="col-md-1">
+          <span class="sum">0</span>
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="add">+</button>
+          <button type="button" class="remove">-</button>
+        </div>
+      </div>
+    <!--div for customs! ends-->
+    <div id="customsAdd"></div>
+     <div class="col-md-12 pull-right">
+        <label>Total:</label>&nbsp;<b><span id="tot">0</span></b>
+      </div>
+        </div>
+    </form>  
+  </div>
+</body>
+<script>
+    var    str ="";
+     var counter=0;
+$(document).ready(function() {
+
+    $(".customs-table .remove:lt(1)").hide();  
+  
+
+$("#formContainer").on("click", "button", function() {
+  var selector = "div.row";
+  var $div = $(this).closest(selector);
+  if ($(this).is(".add")) {
+    var $newDiv = $div.clone();
+    console.log($newDiv);
+    $newDiv.find(":input").val(""); // clear all
+    $newDiv.find("[type=number]").val(0); // clear numbers
+    $newDiv.find(".sum").text(0); // clear total
+    $newDiv.insertAfter($div)
+  }
+  else {
+    $div.remove();
+    calTotal();
+  }
+  $(".customs-table .remove:gt(0)").show();  
+  
+});
+    
+ $("#formContainer").on("input", "[type=number]", function() {
+  $("#formContainer [type=number]").each(function() {
+    var $row = $(this).closest(".row");
+    console.log($row);
+    var $fields = $row.find("[type=number]");
+      console.log($fields);
+    var val1 = $fields.eq(0).val();
+    var val2 = $fields.eq(1).val();
+    var tot = (isNaN(val1) ? 0 : +val1) + (isNaN(val2) ? 0 : +val2)
+    $row.find(".sum").text(tot);
+  });
+  
+  var total = 0;
+  $(".sum").each(function() {
+    total += isNaN($(this).text()) ? 0 : +$(this).text()
+  });
+  $("#tot").text(total);
+});
+
+    function calTotal(){
+  var total = 0;
+  $(".sum").each(function() {
+    total += isNaN($(this).text()) ? 0 : +$(this).text()
+  });
+  $("#tot").text(total);
+}
+    
+
+});
+</script>
+</html>

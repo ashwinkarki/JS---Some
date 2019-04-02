@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <select class="form-control col-md-6" id="a">
+     <option value="" selected disabled hidden>Choose here</option>
+        <option value="1">Customs</option>
+      <option value="2">VAT</option>
+      <option value="3">Excise</option>
+      <option value="4">Others</option>
+
+    </select>
+    <br/>
+  <!--div for customs!-->
+     <form class="dynamicForm">
+    <h2>Customs</h2> <br/>
+  <div class="form-group row" id="forCustoms">
+     
+    <label class="col-xs-3 col-form-label mr-2">Reason</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control" id="reason" name="reason">
+    </div>
+
+
+    <label class="col-xs-3 col-form-label mr-2">Amount</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control amount" id="amount" name="amount">
+    </div>
+
+    <label class="col-xs-3 col-form-label mr-2">Penalty</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control penalty" id="penalty" name="penalty">
+    </div>
+    <div class="col-xs-9">
+        <input type="text" class="form-control" name="assessCatId" value="1" style="display:none;">
+
+      </div>
+    <div class="col-xs-9">
+      <button type="button" class="add">+</button>
+     <!-- <button type="button" class="remove">-</button>-->
+    </div>
+      
+   </div>
+        </form>
+   <div id="customsAdd"></div>
+  <!--div for customs! ends-->
+    
+    <!--div for vats!-->
+     <form class="dynamicForm">
+       <h2>Vats</h2> <br/>  
+  <div class="form-group row" id="forVat">
+       <!--<h2>Vats</h2><br/>-->
+    <label class="col-xs-3 col-form-label mr-2">Reason</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control" id="reason" name="reason">
+    </div>
+   <label class="col-xs-3 col-form-label mr-2">Amount</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control amount" id="amount" name="amount">
+    </div>
+
+    <label class="col-xs-3 col-form-label mr-2">Penalty</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control penalty" id="penalty" name="penalty">
+    </div>
+<div class="col-xs-9">
+        <input type="text" class="form-control" name="assessCatId" value="2" style="display:none;">
+
+      </div>
+    <div class="col-xs-9">
+      <button type="button" class="add">+</button>
+     <!-- <button type="button" class="remove">-</button>-->
+    </div>
+  </div>
+    </form>
+    <div id="vatsAdd"></div>
+  <!--div for vats! ends-->
+    
+    
+       <!--div for excise!-->
+     <form class="dynamicForm">
+          <h2>Excise</h2> <br/>
+  <div class="form-group row" id="forExcise">
+       <!--<h2>Excise</h2><br/>-->
+    <label class="col-xs-3 col-form-label mr-2">Reason</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control" id="reason" name="reason">
+    </div>
+
+
+    <label class="col-xs-3 col-form-label mr-2">Amount</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control amount" id="amount" name="amount">
+    </div>
+
+    <label class="col-xs-3 col-form-label mr-2">Penalty</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control penalty" id="penalty" name="penalty">
+    </div>
+<div class="col-xs-9">
+        <input type="text" class="form-control" name="assessCatId" value="3" style="display:none;">
+
+      </div>
+    <div class="col-xs-9">
+      <button type="button" class="add">+</button>
+     <!-- <button type="button" class="remove">-</button>-->
+    </div>
+  </div>
+    </form>
+    <div id="exciseAdd"></div>
+  <!--div for excise! ends-->
+    
+       <!--div for other!-->
+     <form class="dynamicForm">
+         
+  <div class="form-group row" id="forOther">
+      <h2>Others</h2>
+    <label class="col-xs-3 col-form-label mr-2">Other Reason</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control" id="reason" name="reason">
+    </div>
+
+
+    <label class="col-xs-3 col-form-label mr-2">Other Amount</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control amount" id="amount" name="amount">
+    </div>
+
+    <label class="col-xs-3 col-form-label mr-2">Other Penalty</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control penalty" id="penalty" name="penalty">
+    </div>
+<div class="col-xs-9">
+        <input type="text" class="form-control" name="assessCatId" value="4" style="display:none;">
+
+      </div>
+    <div class="col-xs-9">
+      <button type="button" class="add">+</button>
+    <!--  <button type="button" class="remove">-</button>-->
+    </div>
+  </div>
+    </form>
+    <div id="otherAdd"></div>
+  <!--div for other! ends-->
+ 
+  <div class="col-md-12">
+    Total :
+    <p id="total"></p>
+  </div>
+    <button id="saveBtn" class="btn btn-primary pull-right" style="margin: 5px;">Save</button>
+</div>
+    
+</body>
+     
+ <script>  
+ var str = "";
+var counter = 0;
+var total = 0;
+
+$(document).ready(function() {
+    
+     $("#forCustoms").hide();
+    $("#forVat").hide();
+    
+    $("#forVat").hide();
+    $("#vatsAdd").hide();
+    
+    $("#forExcise").hide();
+        $("#exciseAdd").hide();
+    
+       $("#forOther").hide();
+          
+          $("#otherAdd").hide();
+          
+    
+  $('#a').on('change', function() {
+  if(this.value == 1) {
+       $("#forCustoms").show();
+     $("#customsAdd").show();
+      
+       $("#forVat").hide();
+        $("#vatsAdd").hide();
+      
+       $("#forExcise").hide();
+        $("#exciseAdd").hide();
+      
+          $("#forOther").hide();
+          
+          $("#otherAdd").hide();
+      
+      alert();
+  }
+  else if(this.value == 2){
+      $("#forCustoms").hide();
+      $("#customsAdd").hide();
+      $("#forExcise").hide();
+      $("#exciseAdd").hide();
+      $("#forOther").hide();
+      $("#otherAdd").hide();
+      
+      
+      
+       $("#forVat").show();
+        $("#vatsAdd").show();
+      
+  } 
+      else if(this.value == 3){
+      $("#forCustoms").hide();
+      $("#customsAdd").hide();
+       $("#forOther").hide();
+         $("#otherAdd").hide();
+         $("#forVat").hide();
+        $("#vatsAdd").hide();  
+          
+          
+       $("#forExcise").show();
+        $("#exciseAdd").show();
+          
+          
+      
+  } 
+      else{
+          $("#forOther").show();
+           $("#otherAdd").show();
+          
+           $("#forCustoms").hide();
+      $("#customsAdd").hide();
+      $("#forExcise").hide();
+      $("#exciseAdd").hide();
+       $("#forVat").hide();
+        $("#vatsAdd").hide();
+      
+          
+      }
+});    
+    
+  $(".container").on("input", ".amount, .penalty", function() {
+    var tArr = $(".amount, .penalty").map(function(i,el){
+      return Number($(this).val());
+    }).get();
+    total = tArr.reduce((a,c) => a+c,0);
+    //console.log(total);
+    $("#total").html(total);
+  });
+
+  $(".container").on("click", ".add", function() {
+      var selectedValue=$( "#a option:selected" ).val();
+     str ="<form class='dynamicForm'><div class='form-group row' >"
+      +"<label class='col-xs-3 col-form-label mr-2'>Reason</label>"
+      +"<div class='col-xs-9'>"
+       + "<input type='text' class='form-control' id='reason"+counter+"' name='reason'>"
+      +"</div>"
+
+
+      +"<label class='col-xs-3 col-form-label mr-2'>Amount</label>"
+      +"<div class='col-xs-9'>"
+       + "<input type='text' class='form-control amount' id='amount"+counter+"' name='amount'>"
+      +"</div>"
+
+     + "<label class='col-xs-3 col-form-label mr-2'>Penalty</label>"
+     +"<div class='col-xs-9'>"
+        +"<input type='text' class='form-control penalty' id='penalty"+counter+"' name='penalty'>"
+      +"</div>"
+      +"<div class='col-xs-9'>"
+        +"<input type='text' class='form-control' name='assessCatId' value='"+selectedValue+"' style='display:none;' >"
+
+     +"</div>"
+
+      + "<div class='col-xs-9'>"
+        + "<button type='button' class='add'>+</button>"
+      +  "<button type='button' class='remove'>-</button>"
+      + "</div>"
+    +  "</div></form>";
+     counter++;
+      if(selectedValue ==1 ){
+          $("#customsAdd").append(str);
+      }
+      else if(selectedValue == 2){
+          $("#vatsAdd").append(str);
+          
+      }
+       else if(selectedValue == 3){
+          $("#exciseAdd").append(str);
+          
+      }
+      else{
+          $("#otherAdd").append(str);
+      }
+     
+  });
+
+  $(".container").on("click", ".remove", function() {
+    if($(".form-group.row").length > 1){ // remove only if there is more than one element
+      $(this).closest('.form-group.row').remove();
+      $(".amount, .penalty").trigger("input");
+    }
+  });
+
+});
+     
+       $("#saveBtn").on("click", function() {
+          var a=[];
+            var data = {};
+   /*  $("#asd").serializeArray().map(function(x){
+         data[x.name] = x.value;
+         a.push(data)       
+     }); 
+    console.log(a);  */
+        var list = [];
+          $(".dynamicForm").each(function(){
+            list.push($(this).serializeArray().reduce(function(a, x){
+                a[x.name] = x.value;
+                return a;
+            }, {}));     
+     });
+         console.log(list);
+            var newArray = list.filter(function (el) {
+  return el.reason != "" &&
+         el.amount != "" &&
+         el.penalty != "" ;
+       });
+           
+        var newArrayS = newArray.filter(value => Object.keys(value).length !== 0);   
+           
+     console.log(newArrayS);
+  });
+</script>
+
+</html>

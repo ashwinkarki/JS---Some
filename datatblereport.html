@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<title></title>
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css
+">
+    <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+</head>
+<body>
+    <div class="container">
+<table id="myTable" class="display compact"
+							style="width: 100%">
+							<thead>
+								<tr>
+									<th rowspan="2">EXIM</th>
+									<th rowspan="2">Name</th>
+									<th rowspan="2">Selection</th>
+									<th rowspan="2">Auditor</th>
+									<th rowspan="2" class="tcol1" name="tcol1" id="tcol1">Pre
+										Assessment Date</th>
+									
+									<th colspan="2">VAT</th>
+									<th colspan="2">Excise</th>
+									<th colspan="2">Customs</th>
+									<th colspan="2">Others</th>
+								</tr>
+								<tr>
+									<th>Amt.</th>
+									<th>Pen.</th>
+									<th>Amt.</th>
+									<th>Pen.</th>
+									<th>Amt.</th>
+									<th>Pen.</th>
+									<th>Amt.</th>
+									<th>Pen.</th>
+								</tr>
+							</thead>
+							<tbody>
+
+    <tr>
+        <td class="sorting_1">1234567Np</td>
+        <td>sunmicrosoft</td>
+        <td>16</td>
+        <td>AA</td>
+        <td>2072-01-01</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>1</td>
+        <td>2</td>
+        <td>7</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>4588735NP</td>
+        <td>ASAT Holdings Ltd.</td>
+        <td>3</td>
+        <td>GG</td>
+        <td>2071-01-01</td>
+        <td>99</td>
+        <td>2</td>
+        <td>999</td>
+        <td>3</td>
+        <td>1</td>
+        <td>1</td>
+        <td>89</td>
+        <td>4</td>
+    </tr>
+</tbody>
+						</table>
+        </div>
+</body>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  
+
+
+    <script src="  https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
+        <script src="
+https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+
+      
+
+    <script>
+    $(document).ready(function() {
+    $('#myTable').DataTable( {
+     dom: 'Bfrtip',
+         scrollY:        "300px",
+        scrollX:        true,
+        scrollCollapse: true,
+        paging:         false,
+        fixedColumns:   {
+            leftColumns: 1,
+            rightColumns: 1
+        },
+       buttons: [
+        {
+            extend: 'excelHtml5',
+            text: 'Save as Excel',
+            customize: function( xlsx ) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                $('row:first c', sheet).attr( 's', '42' );
+            }
+        }
+    ]
+} );
+} );
+        
+        function createCellPos( n ){
+    var ordA = 'A'.charCodeAt(0);
+    var ordZ = 'Z'.charCodeAt(0);
+    var len = ordZ - ordA + 1;
+    var s = "";
+ 
+    while( n >= 0 ) {
+        s = String.fromCharCode(n % len + ordA) + s;
+        n = Math.floor(n / len) - 1;
+    }
+ 
+    return s;
+}
+    </script>
+
+</html>

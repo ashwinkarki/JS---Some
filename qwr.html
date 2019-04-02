@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!-- Popper JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <title></title>
+   </head>
+   <body>
+     <table class="table table-bordered" id="tempTable">
+   <thead>
+      <tr>
+         <th>A</th>
+         <th>B</th>
+         <th>C</th>
+         <th>D</th>
+         <th>E</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>
+            <select>
+               <option value="1">QQ</option>
+               <option value="2">Apple</option>
+               <option value="3">Orange</option>
+               <option value="4">Mango </option>
+            </select>
+         </td>
+         <td><input style="width:130px;" type="text" name="assessReason" autocomplete="off" id="assessReason4" required=""></td>
+         <td><input type="number" name="assessAmount" autocomplete="off" class="amount" id="assessAmount4" required=""></td>
+         <td><input type="number" name="assessPenalty" autocomplete="off" class="penalty" id="assessPenalty4" required=""></td>
+         <td><i value="Delete" type="button" alt="Delete4"  class="deleteIcon fa fa-trash"></i></td>
+      </tr>
+      <tr>
+         <td>
+            <select>
+               <option value="1">QQ</option>
+               <option value="2">Apple</option>
+               <option value="3">Orange</option>
+               <option value="4">Mango </option>
+            </select>
+         </td>
+         <td><input style="width:130px;" type="text" name="assessReason" autocomplete="off" id="assessReason5" required=""></td>
+         <td><input type="number" name="assessAmount" autocomplete="off" class="amount" id="assessAmount5" required=""></td>
+         <td><input type="number" name="assessPenalty" autocomplete="off" class="penalty" id="assessPenalty5" required=""></td>
+         <td><i value="Delete" type="button" alt="Delete5"  class="deleteIcon fa fa-trash"></i></td>
+      </tr>
+      <tr>
+         <td>
+            <select>
+               <option value="1">QQ</option>
+               <option value="2">Apple</option>
+               <option value="3">Orange</option>
+               <option value="4">Mango </option>
+            </select>
+         </td>
+         <td><input style="width:130px;" type="text" name="assessReason" autocomplete="off" id="assessReason6" required=""></td>
+         <td><input type="number" name="assessAmount" autocomplete="off" class="amount" id="assessAmount6" required=""></td>
+         <td><input type="number" name="assessPenalty" autocomplete="off" class="penalty" id="assessPenalty6" required=""></td>
+         <td><i value="Delete" type="button" alt="Delete6" class="deleteIcon fa fa-trash"></i></td>
+      </tr>
+   </tbody>
+</table>
+   </body>
+    <script type="text/javascript">
+     
+
+         $(document).on("click", ".deleteIcon", function() {
+         
+         indexDelAgent = parseInt($(this).attr("alt").replace("Delete", ""));
+         console.log("after deletion");
+         console.log(indexDelAgent);
+
+         document.getElementById("tempTable").deleteRow(indexDelAgent);
+
+        });   
+
+
+   </script> 
+</html>

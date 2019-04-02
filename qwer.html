@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+  <!--  <select class="form-control col-md-6">
+      <option value="1">Customs</option>
+      <option value="2">VAT</option>
+      <option value="3">Excise</option>
+      <option value="4">Others</option>
+
+    </select>-->
+
+  <!--div for customs!-->
+    <form class="dynamicForm">
+  <div class="form-group row" id="forCustoms">
+    <label class="col-xs-3 col-form-label mr-2">Reason</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control" id="reason" name="reason">
+    </div>
+
+
+    <label class="col-xs-3 col-form-label mr-2">Amount</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control amount" id="amount" name="amount">
+    </div>
+
+    <label class="col-xs-3 col-form-label mr-2">Penalty</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control penalty" id="penalty" name="penalty">
+    </div>
+
+    <div class="col-xs-9">
+      <button type="button" class="add">+</button>
+     <!-- <button type="button" class="remove">-</button>-->
+    </div>
+  </div>
+        </form>
+  <!--div for customs! ends-->
+  <div id="customsAdd"></div>
+       
+  <div class="col-md-12">
+    Total :
+    <p id="total"></p>
+  </div>
+   
+</div>
+    <button id="saveBtn" class="btn btn-primary pull-right" style="margin: 5px;">Save</button>
+</body>
+    <script>
+var str = "";
+var counter = 0;
+var total = 0;
+
+$(document).ready(function() {
+  $(".container").on("input", ".amount, .penalty", function() {
+    var tArr = $(".amount, .penalty").map(function(i,el){
+      return Number($(this).val());
+    }).get();
+    total = tArr.reduce((a,c) => a+c,0);
+    //console.log(total);
+    $("#total").html(total);
+  });
+
+  $(".container").on("click", ".add", function() { 
+   
+     str ="<form class='dynamicForm'><div class='form-group row' >"
+      +"<label class='col-xs-3 col-form-label mr-2'>Reason</label>"
+      +"<div class='col-xs-9'>"
+       + "<input type='text' class='form-control' id='reason"+counter+"' name='reason'>"
+      +"</div>"
+
+
+      +"<label class='col-xs-3 col-form-label mr-2'>Amount</label>"
+      +"<div class='col-xs-9'>"
+       + "<input type='text' class='form-control amount' id='amount"+counter+"' name='amount'>"
+      +"</div>"
+
+     + "<label class='col-xs-3 col-form-label mr-2'>Penalty</label>"
+     +"<div class='col-xs-9'>"
+        +"<input type='text' class='form-control penalty' id='penalty"+counter+"' name='penalty'>"
+
+     +"</div>"
+
+      + "<div class='col-xs-9'>"
+        + "<button type='button' class='add'>+</button>"
+      +  "<button type='button' class='remove'>-</button>"
+      + "</div>"
+    +  "</div></form>";
+     counter++;
+     $("#customsAdd").append(str);
+  });
+
+  $(".container").on("click", ".remove", function() {
+    if($(".form-group.row").length > 1){ // remove only if there is more than one element
+      $(this).closest('.dynamicForm').remove();
+      $(".amount, .penalty").trigger("input");
+    }
+  });
+    
+      $("#saveBtn").on("click", function() {
+          var a=[];
+            var data = {};
+   /*  $("#asd").serializeArray().map(function(x){
+         data[x.name] = x.value;
+         a.push(data)       
+     }); 
+    console.log(a);  */
+        var list = [];
+          $(".dynamicForm").each(function(){
+            list.push($(this).serializeArray().reduce(function(a, x){
+                a[x.name] = x.value;
+                return a;
+            }, {}));     
+     });
+         /*console.log(list);*/
+          
+           var newArray = list.filter(function (el) {
+  return el.reason != "" &&
+         el.amount != "" &&
+         el.penalty != "" ;
+       
+});
+     console.log(newArray);
+  });
+    
+    
+  
+});
+</script>
+</html>

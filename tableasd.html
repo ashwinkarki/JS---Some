@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title></title>
+</head>
+
+<body>
+  <table class="tapshil" id="" border="2px" width="100%">
+    <thead>
+      <tr>
+        <th>
+          <font face="preeti">l;=g+=</font>
+        </th>
+        <th>
+          <font face="preeti"> k|=b=g</font>
+        </th>
+        <th>
+          <font face="preeti"> ldlt</font>
+        </th>
+        <th>
+          <font face="preeti"> eG;f/ dx;'n tyf hl/jfgf</font>
+        </th>
+        <th>
+          <font face="preeti"> cGtMz'Ns</font>
+        </th>
+        <th>
+          <font face="preeti"> d"=c=s/ </font>
+        </th>
+        <th>
+          <font face="preeti"> hDdf dx;'n</font>
+        </th>
+        <th>
+          <font face="preeti"> hDdf </font>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- put loop here -->
+      <tr>
+        <td>1</td>
+        <td>11 1212231
+        </td>
+        <td class="nameOfPeople">Arun Lama 2070-01-01 2072-01-01 Amin Shrestha 2070-01-01 2072-01-01
+        </td>
+        <td>3</td>
+        <td>7</td>
+        <td>11</td>
+        <td>15</td>
+        <td class="totalOfAll">36</td>
+      </tr>
+    </tbody>
+  </table>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+
+
+
+
+<script>
+    $(document).ready(function() {
+   
+    
+
+ alert("inside");
+        $( ".nameOfPeople" ).each(function() {
+            var html = $(this).html().split(" ");
+             html = html.slice(0,4).join(" ") + "<br />" + html.slice(4).join(" ");
+             $(this).html(html);
+        });
+    });
+</script>
+</html>
